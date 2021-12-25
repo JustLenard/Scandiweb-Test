@@ -4,7 +4,7 @@ import './App.sass';
 
 const App = () => {
 	return (
-		<div>
+		<div class="main-container">
 			<NavBar />
 		</div>
 	);
