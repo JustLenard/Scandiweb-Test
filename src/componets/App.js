@@ -1,14 +1,17 @@
 import React from 'react';
-import NavBar from './NavBar/NavBar';
-import Card from './Card/Card';
-import './App.sass';
+
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import Home from './Pages/Home';
+import AddProduct from './Pages/AddProduct';
 
 const App = () => {
 	return (
-		<div class="main-container">
-			<NavBar />
-			<Card />
-		</div>
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/addproduct" exact element={<AddProduct />} />
+			</Routes>
+		</BrowserRouter>
 	);
 };
 

@@ -1,13 +1,17 @@
 import React from 'react';
 import './NavBar.sass';
+import { Link } from 'react-router-dom';
+import Button from '../Button/Button';
 
-const NavBar = () => {
+const NavBar = props => {
 	return (
 		<div id="navbar">
-			<h1 id="navbar-text">Productsl list</h1>
-			<div class="navbar-buttons">
-				<button id="add-product-btn">add</button>
-				<button id="delete-product-btn">delete</button>
+			<h1 id="navbar-text">{props.NavBarText}</h1>
+			<div className="navbar-buttons">
+				<Link to={props.addProductLink}>
+					<Button textInButton={props.textInButton1} />
+				</Link>
+				<Button textInButton={props.textInButton2} id="delete-product-btn" />
 			</div>
 		</div>
 	);
