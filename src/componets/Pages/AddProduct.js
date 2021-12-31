@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from '../NavBar/NavBar';
+import ProdufctInfo from '../ProductInfo/ProdufctInfo';
 
 const AddProduct = props => {
 	return (
@@ -10,6 +11,7 @@ const AddProduct = props => {
 				textInButton2={'Save'}
 				addProductLink="/"
 			/>
+			<ProdufctInfo />
 		</div>
 	);
 };
