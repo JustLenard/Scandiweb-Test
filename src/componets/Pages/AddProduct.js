@@ -1,10 +1,12 @@
 import React from 'react';
 import NavBar from '../NavBar/NavBar';
 import ProdufctInfo from '../ProductInfo/ProdufctInfo';
+import Footer from '../Footer/Footer';
+import './AddProduct.sass';
 
 const AddProduct = props => {
 	return (
-		<div>
+		<div className="main-container">
 			<NavBar
 				NavBarText={'Add Product'}
 				textInButton1={'Cancel'}
@@ -12,6 +14,7 @@ const AddProduct = props => {
 				addProductLink="/"
 			/>
 			<ProdufctInfo />
+			<Footer />
 		</div>
 	);
 };
