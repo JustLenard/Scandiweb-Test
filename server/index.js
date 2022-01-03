@@ -22,10 +22,10 @@ const app = express();
 // 		if (err) throw err;
 // 		res.send(results);
 // 	});
-// });
+// });s
 app.get('/', (req, res) => {
 	const sqlInsert =
-		'INSERT INTO new_table (name_product, price_product) VALUES (stick, 3)';
+		'INSERT INTO new_table (name_product, price_product) VALUES ("stick", 3)';
 	// db.query(sqlInsert, [nameProduct, priceProduct], (err, result) => {});
 	connection.query(sqlInsert, (err, results) => {
 		if (err) throw err;
