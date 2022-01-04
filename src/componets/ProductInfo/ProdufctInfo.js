@@ -8,7 +8,7 @@ const ProdufctInfo = props => {
 	// 	Furniture: FurnitureComponent,
 	// };
 
-	const [currentType, setCurrentType] = useState(0);
+	const [currentType, setCurrentType] = useState('');
 
 	const changeType = e => {
 		setCurrentType(e.target.value);
@@ -46,9 +46,8 @@ const ProdufctInfo = props => {
 						<option value="Furniture">Furniture</option>
 						<option value="Book">Book</option>
 					</select>
-					<ProductType currentType={currentType} />
-					{/* {toRender} */}
 				</div>
+				<ProductType currentType={currentType} />
 			</form>
 		</div>
 	);
