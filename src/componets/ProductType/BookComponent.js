@@ -1,10 +1,15 @@
 import React from 'react';
 
-const BookComponent = () => {
+const BookComponent = props => {
 	return (
 		<div id="Book">
 			<label>Weight (Kg)</label>
-			<input type="number"></input>
+			<input
+				type="number"
+				onChange={e => {
+					props.setProductWeight(e.target.value);
+				}}
+			></input>
 		</div>
 	);
 };

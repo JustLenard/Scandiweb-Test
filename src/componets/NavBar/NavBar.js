@@ -11,7 +11,11 @@ const NavBar = props => {
 				<Link to={props.addProductLink}>
 					<Button textInButton={props.textInButton1} />
 				</Link>
-				<Button textInButton={props.textInButton2} id="delete-product-btn" />
+				<Button
+					textInButton={props.textInButton2}
+					id="delete-product-btn"
+					handleClick={props.handleClick}
+				/>
 			</div>
 		</div>
 	);

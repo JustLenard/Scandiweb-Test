@@ -1,10 +1,15 @@
 import React from 'react';
 
-const DVDComponent = () => {
+const DVDComponent = props => {
 	return (
 		<div id="DVD">
 			<label>Size (MB)</label>
-			<input type="number"></input>
+			<input
+				type="number"
+				onChange={e => {
+					props.setProductSize(e.target.value);
+				}}
+			></input>
 		</div>
 	);
 };
