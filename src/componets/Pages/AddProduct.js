@@ -12,8 +12,12 @@ const AddProduct = props => {
 		console.log('f');
 	};
 
+	const [data, setData] = useState({});
+
+	const childToParent = () => {};
+
 	const [productInfoObject, setProductInfoObject] = useState({});
-	console.log(productInfoObject);
+	// console.log(productInfoObject);
 	return (
 		<div className="main-container">
 			<NavBar
@@ -23,7 +27,10 @@ const AddProduct = props => {
 				addProductLink="/"
 				handleClick={saveProduct}
 			/>
-			<ProductInfo setProductInfoObject={setProductInfoObject} />
+			<ProductInfo
+				setProductInfoObject={setProductInfoObject}
+				childToParent={childToParent}
+			/>
 			<Footer />
 		</div>
 	);

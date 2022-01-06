@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProductInfo.sass';
 import ProductType from '../ProductType/ProductType';
 import FurnitureComponent from '../ProductType/FurnitureComponent';
@@ -25,9 +25,23 @@ const ProductInfo = props => {
 		productLength: productLength,
 		productWidth: productWidth,
 	};
-	// console.log(productInfoObject);
-	// export { productInfoObject };
-	props.setProductInfoObject = productInfoObject;
+
+	useEffect(() => {
+		console.log('shit happend');
+		props.setProductInfoObject(productInfoObject);
+	}, []);
+
+	console.log(productInfoObject);
+	// props.setProductInfoObject(productInfoObject, [1]);
+	// productInfoObject.onChange = e => {
+	// 	props.setProductInfoObject(e.target.value);
+	// 	console.log(productInfoObject);
+	// 	console.log('here');
+	// };
+
+	// productInfoObject.onchange = function () {
+	// 	console.log('it was changed');
+	// };
 
 	const changeType = e => {
 		setCurrentType(e.target.value);
@@ -92,5 +106,5 @@ const ProductInfo = props => {
 		</div>
 	);
 };
-
+// console.log('outside', productInfoObject);
 export default ProductInfo;
