@@ -26,12 +26,13 @@ const ProductInfo = props => {
 		productWidth: productWidth,
 	};
 
+	// console.log(clone);
 	useEffect(() => {
 		console.log('shit happend');
 		props.setProductInfoObject(productInfoObject);
-	}, []);
+	}, [JSON.stringify(productInfoObject)]);
 
-	console.log(productInfoObject);
+	// console.log(productInfoObject);
 	// props.setProductInfoObject(productInfoObject, [1]);
 	// productInfoObject.onChange = e => {
 	// 	props.setProductInfoObject(e.target.value);
