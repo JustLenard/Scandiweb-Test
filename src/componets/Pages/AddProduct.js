@@ -8,21 +8,23 @@ import Axios from 'axios';
 const AddProduct = props => {
 	const [productInfoObject, setProductInfoObject] = useState({});
 	const saveProduct = () => {
-		console.log('Yea, I am in parent', productInfoObject);
+		console.log(Number(productInfoObject['productSize']));
+		console.log(productInfoObject['productSize']);
+		console.log(productInfoObject);
 		Axios.post('http://localhost:3001/api/insert', {
 			productSku: productInfoObject['productSku'],
 			productName: productInfoObject['productName'],
 			productPrice: productInfoObject['productPrice'],
 			productType: productInfoObject['currentType'],
+			productHeight: Number(productInfoObject['productHeight']),
+			productLength: Number(productInfoObject['productLength']),
+			productSize: Number(productInfoObject['productSize']),
+			productWeight: Number(productInfoObject['productWeight']),
+			productWidth: Number(productInfoObject['productWidth']),
 		}).then(() => {
 			alert('success');
 		});
 	};
-	// console.log(productInfoObject['productSku']);
-
-	// const submitToDb = ()=>{
-
-	// }
 
 	return (
 		<div className="main-container">

@@ -38,31 +38,28 @@ app.get('/api/get', (req, res) => {
 });
 
 app.post('/api/insert', (req, res) => {
-	const productSku = req.body.productSku;
-	const productName = req.body.productName;
-	const productPrice = req.body.productPrice;
-	const productType = req.body.productType;
+	const FrontEndObj = req.body;
 
 	const sqlInsert =
-		'INSERT INTO Products (Sku, Name, Price, Type) VALUES (?, ?, ?, ?)';
+		'INSERT INTO Products (Sku, Name, Price, Type, Size, Weight, Height, Length, Width) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
 	connection.query(
 		sqlInsert,
-		[productSku, productName, productPrice, productType],
+		[
+			FrontEndObj.productSku,
+			FrontEndObj.productName,
+			FrontEndObj.productPrice,
+			FrontEndObj.productType,
+			FrontEndObj.productSize,
+			FrontEndObj.productWeight,
+			FrontEndObj.productHeight,
+			FrontEndObj.productLength,
+			FrontEndObj.productWidth,
+		],
 		(err, result) => {
 			console.log(err);
 		}
 	);
 });
-
-// app.get('/', (req, res) => {
-// 	const sqlInsert =
-// 		'INSERT INTO new_table (name_product, price_product) VALUES ("stick", 3)';
-// 	// db.query(sqlInsert, [nameProduct, priceProduct], (err, result) => {});
-// 	connection.query(sqlInsert, (err, results) => {
-// 		if (err) throw err;
-// 		res.send(results);
-// 	});
-// });
 
 app.listen(3001, () => {
 	console.log('seems to be working!!');
@@ -71,8 +68,3 @@ app.listen(3001, () => {
 		console.log('Connected to DB');
 	});
 });
-
-// db.connect(function (err) {
-// 	if (err) throw err;
-// 	console.log('Connected!');
-// });

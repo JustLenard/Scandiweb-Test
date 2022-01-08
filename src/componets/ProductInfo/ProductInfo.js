@@ -28,7 +28,7 @@ const ProductInfo = props => {
 
 	// console.log(clone);
 	useEffect(() => {
-		console.log('shit happend');
+		// console.log(typeof productInfoObject['productPrice']);
 		props.setProductInfoObject(productInfoObject);
 	}, [JSON.stringify(productInfoObject)]);
 
