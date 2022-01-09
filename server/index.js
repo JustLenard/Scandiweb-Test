@@ -37,6 +37,20 @@ app.get('/api/get', (req, res) => {
 	});
 });
 
+app.delete('/api/delete/:toDelete', (req, res) => {
+	console.log(req.body);
+	const toDelete = req.body.toDelete;
+	console.log(toDelete);
+	const sqlDelete = 'DELETE FROM Products WHERE idProduct = ?';
+
+	// toDelete.forEach(product => {
+	// 	console.log(product);
+	// });
+	// connection.query(sqlDelete, toDelete[0], (err, result) => {
+	// 	if (err) console.log(err);
+	// });
+});
+
 app.post('/api/insert', (req, res) => {
 	const FrontEndObj = req.body;
 

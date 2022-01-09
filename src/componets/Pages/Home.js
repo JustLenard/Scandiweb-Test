@@ -18,27 +18,25 @@ const Home = props => {
 	}, []);
 	// console.log(dbProducts);
 	const [deleteList, setDeleteList] = useState(dbProducts);
-	// useEffect(() => {
-	// 	console.log('weird');
-	// 	const f = dbProducts;
-	// 	console.log(f);
-	// 	setDeleteList(dbProducts);
-	// }, []);
-	// deleteList = dbProducts;
-	// console.log(deleteList);
+
 	// console.log(dbProducts);
-	const handleCheck = () => {
-		// dbProducts[0].checked = !dbProducts[0].checked;
-		// console.log(dbProducts[0].checked);
+	const handleCheck = (newValue, id) => {
+		// console.log(newValue, id);
+		dbProducts[id].checked = newValue;
 		// console.log(dbProducts);
-		// dbProducts[idProduct]
+
+		setDbProducts(dbProducts);
 	};
-	// console.log(dbProducts['Name']);
-	// console.log(
-	// 	dbProducts.map(product => {
-	// 		console.log(product['Name']);
-	// 	})
-	// );
+
+	const massDelete = () => {
+		const toDelete = dbProducts
+			.filter(product => product.checked === true)
+			.map(product => product.idProduct);
+		console.log(toDelete);
+		// console.log(toDelete.map(product => product.idProduct));
+		Axios.delete(`http://localhost:3001/api/delete/${toDelete}`);
+	};
+
 	return (
 		<div className="main-container">
 			<NavBar
@@ -46,6 +44,7 @@ const Home = props => {
 				textInButton1={'Add'}
 				textInButton2={'Mass Delete'}
 				addProductLink="/addproduct"
+				handleClick={massDelete}
 			/>
 			<div className={'card-container'}>
 				{dbProducts.map(dbProduct => {
@@ -63,7 +62,7 @@ const Home = props => {
 							Width={dbProduct['Width']}
 							Checked={dbProduct['Checked']}
 							key={dbProduct['Sku']}
-							idProduct={dbProduct['IdProduct'] - 1}
+							idProduct={dbProduct['idProduct'] - 1}
 							dbProducts={dbProducts}
 							setDeleteList={setDeleteList}
 							deleteList={deleteList}

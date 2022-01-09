@@ -27,7 +27,12 @@ const Card = props => {
 
 	return (
 		<div className={'card'}>
-			<input type={'checkBox'} onClick={}></input>
+			<input
+				type={'checkBox'}
+				onClick={e => {
+					props.handleCheck(e.target.checked, props.idProduct);
+				}}
+			></input>
 			<div>Sku: {props.Sku}</div>
 			<div>Name: {props.Name}</div>
 			<div>Price: {props.Price} $</div>
