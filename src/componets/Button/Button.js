@@ -3,7 +3,7 @@ import './Button.sass';
 
 const Button = props => {
 	return (
-		<button className="btn" onClick={props.handleClick}>
+		<button id="delete-product-btn" className="btn" onClick={props.handleClick}>
 			{props.textInButton}
 		</button>
 	);

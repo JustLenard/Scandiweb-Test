@@ -7,10 +7,9 @@ import Axios from 'axios';
 
 const AddProduct = props => {
 	const [productInfoObject, setProductInfoObject] = useState({});
+
+	//Save product to Data Base
 	const saveProduct = () => {
-		console.log(Number(productInfoObject['productSize']));
-		console.log(productInfoObject['productSize']);
-		console.log(productInfoObject);
 		Axios.post('http://localhost:3001/api/insert', {
 			productSku: productInfoObject['productSku'],
 			productName: productInfoObject['productName'],
@@ -21,18 +20,17 @@ const AddProduct = props => {
 			productSize: Number(productInfoObject['productSize']),
 			productWeight: Number(productInfoObject['productWeight']),
 			productWidth: Number(productInfoObject['productWidth']),
-		}).then(() => {
-			alert('success');
 		});
+		window.location = 'http://localhost:3000/';
 	};
 
 	return (
 		<div className="main-container">
 			<NavBar
-				NavBarText={'Add Product'}
+				navBarText={'Add Product'}
 				textInButton1={'Cancel'}
 				textInButton2={'Save'}
-				addProductLink="/"
+				handleRouting="/"
 				handleClick={saveProduct}
 			/>
 			<ProductInfo setProductInfoObject={setProductInfoObject} />

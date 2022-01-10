@@ -5,6 +5,7 @@ const DVDComponent = props => {
 		<div id="DVD">
 			<label>Size (MB)</label>
 			<input
+				id="size"
 				type="number"
 				onChange={e => {
 					props.setProductSize(e.target.value);

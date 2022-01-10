@@ -3,40 +3,29 @@ import './Card.sass';
 
 const Card = props => {
 	const typeDiferences = {
-		Book: <div>Weight: {props.Size} KG</div>,
-		DVD: <div>Size: {props.Size} MB</div>,
+		Book: <div>Weight: {props.product.Size} KG</div>,
+		DVD: <div>Size: {props.product.Size} MB</div>,
 		Furniture: (
 			<div>
-				Dimension: {props.Width}x{props.Length}x{props.Height}
+				Dimension: {props.product.Height}x{props.product.Width}x
+				{props.product.Length}
 			</div>
 		),
 	};
 
-	// const selectDelete = e => {
-	// 	if (e.target.checked === true) {
-	// 		const newAr = props.dbProducts.filter(
-	// 			product =>
-	// 				// product.Sku;
-	// 				product.Sku !== props.Sku
-	// 			// console.log(product.Sku)
-	// 		);
-	// 		// console.log(props.dbProducts);
-	// 		console.log(newAr);
-	// 	}
-	// };
-
 	return (
 		<div className={'card'}>
 			<input
+				className={'delete-checkbox'}
 				type={'checkBox'}
 				onClick={e => {
-					props.handleCheck(e.target.checked, props.idProduct);
+					props.handleCheck(e.target.checked, props.product.idProduct);
 				}}
 			></input>
-			<div>Sku: {props.Sku}</div>
-			<div>Name: {props.Name}</div>
-			<div>Price: {props.Price} $</div>
-			{typeDiferences[`${props.Type}`]}
+			<div>Sku: {props.product.Sku}</div>
+			<div>Name: {props.product.Name}</div>
+			<div>Price: {props.product.Price} $</div>
+			{typeDiferences[`${props.product.Type}`]}
 		</div>
 	);
 };

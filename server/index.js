@@ -37,11 +37,14 @@ app.get('/api/get', (req, res) => {
 	});
 });
 
-app.delete('/api/delete/:toDelete', (req, res) => {
-	console.log(req.body);
-	const toDelete = req.body.toDelete;
-	console.log(toDelete);
-	const sqlDelete = 'DELETE FROM Products WHERE idProduct = ?';
+app.delete('/api/delete', (req, res) => {
+	const toDelete = req.body;
+	console.log(toDelete.join());
+	// toDelete.map(item => console.log(item));
+	const sqlDelete = `DELETE FROM Products WHERE idProduct IN (${toDelete.join()})`;
+	connection.query(sqlDelete, (err, result) => {
+		if (err) console.log(err);
+	});
 
 	// toDelete.forEach(product => {
 	// 	console.log(product);

@@ -6,66 +6,50 @@ import './Home.sass';
 import Axios from 'axios';
 
 const Home = props => {
-	const [dbProducts, setDbProducts] = useState([]);
+	const [products, setProducts] = useState([]);
+
+	// Get the information from the Data Base
 	useEffect(() => {
 		Axios.get('http://localhost:3001/api/get').then(response => {
-			response.data.map(inside => {
-				inside.checked = false;
+			response.data.map(obj => {
+				obj.checked = false;
 			});
-			// console.log(response.data);
-			setDbProducts(response.data);
+			setProducts(response.data);
 		});
 	}, []);
-	// console.log(dbProducts);
-	const [deleteList, setDeleteList] = useState(dbProducts);
 
-	// console.log(dbProducts);
+	const [deleteList, setDeleteList] = useState(products);
+
+	// Handles the 'checked' logic on cards
 	const handleCheck = (newValue, id) => {
-		// console.log(newValue, id);
-		dbProducts[id].checked = newValue;
-		// console.log(dbProducts);
+		products.filter(product => product.idProduct === id)[0].checked = newValue;
 
-		setDbProducts(dbProducts);
+		setProducts(products);
 	};
-
+	// Handles the mass Delete logic
 	const massDelete = () => {
-		const toDelete = dbProducts
+		const toDelete = products
 			.filter(product => product.checked === true)
 			.map(product => product.idProduct);
-		console.log(toDelete);
-		// console.log(toDelete.map(product => product.idProduct));
-		Axios.delete(`http://localhost:3001/api/delete/${toDelete}`);
+		Axios.delete(`http://localhost:3001/api/delete`, { data: toDelete });
+		window.location.reload(true);
 	};
 
 	return (
 		<div className="main-container">
 			<NavBar
-				NavBarText={'Product List'}
+				navBarText={'Product List'}
 				textInButton1={'Add'}
 				textInButton2={'Mass Delete'}
-				addProductLink="/addproduct"
+				handleRouting="/addproduct"
 				handleClick={massDelete}
 			/>
 			<div className={'card-container'}>
-				{dbProducts.map(dbProduct => {
-					// console.log(dbProducts);
+				{products.map(product => {
 					return (
 						<Card
-							Price={dbProduct['Price']}
-							Height={dbProduct['Height']}
-							Length={dbProduct['Length']}
-							Name={dbProduct['Name']}
-							Size={dbProduct['Size']}
-							Sku={dbProduct['Sku']}
-							Type={dbProduct['Type']}
-							Weight={dbProduct['Weight']}
-							Width={dbProduct['Width']}
-							Checked={dbProduct['Checked']}
-							key={dbProduct['Sku']}
-							idProduct={dbProduct['idProduct'] - 1}
-							dbProducts={dbProducts}
-							setDeleteList={setDeleteList}
-							deleteList={deleteList}
+							key={product.Sku}
+							product={product}
 							handleCheck={handleCheck}
 						/>
 					);

@@ -26,23 +26,9 @@ const ProductInfo = props => {
 		productWidth: productWidth,
 	};
 
-	// console.log(clone);
 	useEffect(() => {
-		// console.log(typeof productInfoObject['productPrice']);
 		props.setProductInfoObject(productInfoObject);
 	}, [JSON.stringify(productInfoObject)]);
-
-	// console.log(productInfoObject);
-	// props.setProductInfoObject(productInfoObject, [1]);
-	// productInfoObject.onChange = e => {
-	// 	props.setProductInfoObject(e.target.value);
-	// 	console.log(productInfoObject);
-	// 	console.log('here');
-	// };
-
-	// productInfoObject.onchange = function () {
-	// 	console.log('it was changed');
-	// };
 
 	const changeType = e => {
 		setCurrentType(e.target.value);
@@ -50,10 +36,11 @@ const ProductInfo = props => {
 
 	return (
 		<div>
-			<form className="product-info" id="product_form">
-				<div className="product-sku">
+			<form id="product_form">
+				<div id="sku">
 					<label>Sku</label>
 					<input
+						required
 						type="text"
 						onChange={e => {
 							setProductSku(e.target.value);
@@ -61,7 +48,7 @@ const ProductInfo = props => {
 					></input>
 				</div>
 
-				<div className="product-name">
+				<div id="name">
 					<label>Name</label>
 					<input
 						type="text"
@@ -70,7 +57,7 @@ const ProductInfo = props => {
 						}}
 					></input>
 				</div>
-				<div className="product-price">
+				<div id="price">
 					<label>Price</label>
 					<input
 						type="number"
@@ -107,5 +94,4 @@ const ProductInfo = props => {
 		</div>
 	);
 };
-// console.log('outside', productInfoObject);
 export default ProductInfo;

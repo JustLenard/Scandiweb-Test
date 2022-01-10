@@ -6,6 +6,7 @@ const FurnitureComponent = props => {
 			<div>
 				<label>Height (CM)</label>
 				<input
+					id="height"
 					type="number"
 					onChange={e => {
 						props.setProductHeight(e.target.value);
@@ -15,6 +16,7 @@ const FurnitureComponent = props => {
 			<div>
 				<label>Width (CM)</label>
 				<input
+					id="width"
 					type="number"
 					onChange={e => {
 						props.setProductWidth(e.target.value);
@@ -24,6 +26,7 @@ const FurnitureComponent = props => {
 			<div>
 				<label>Length (CM)</label>
 				<input
+					id="length"
 					type="number"
 					onChange={e => {
 						props.setProductLength(e.target.value);
