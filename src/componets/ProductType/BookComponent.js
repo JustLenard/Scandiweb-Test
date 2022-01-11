@@ -5,6 +5,7 @@ const BookComponent = props => {
 		<div id="Book">
 			<label>Weight (Kg)</label>
 			<input
+				required
 				id="weight"
 				type="number"
 				onChange={e => {

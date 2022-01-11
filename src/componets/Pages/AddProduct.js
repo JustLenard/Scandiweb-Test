@@ -9,17 +9,18 @@ const AddProduct = props => {
 	const [productInfoObject, setProductInfoObject] = useState({});
 
 	//Save product to Data Base
-	const saveProduct = () => {
+	const saveProduct = e => {
+		console.log(window.location);
 		Axios.post('http://localhost:3001/api/insert', {
-			productSku: productInfoObject['productSku'],
-			productName: productInfoObject['productName'],
-			productPrice: productInfoObject['productPrice'],
-			productType: productInfoObject['currentType'],
-			productHeight: Number(productInfoObject['productHeight']),
-			productLength: Number(productInfoObject['productLength']),
-			productSize: Number(productInfoObject['productSize']),
-			productWeight: Number(productInfoObject['productWeight']),
-			productWidth: Number(productInfoObject['productWidth']),
+			productSku: productInfoObject.productSku,
+			productName: productInfoObject.productName,
+			productPrice: productInfoObject.productPrice,
+			productType: productInfoObject.currentType,
+			productHeight: Number(productInfoObject.productHeight),
+			productLength: Number(productInfoObject.productLength),
+			productSize: Number(productInfoObject.productSize),
+			productWeight: Number(productInfoObject.productWeight),
+			productWidth: Number(productInfoObject.productWidth),
 		});
 		window.location = 'http://localhost:3000/';
 	};
@@ -31,9 +32,12 @@ const AddProduct = props => {
 				textInButton1={'Cancel'}
 				textInButton2={'Save'}
 				handleRouting="/"
-				handleClick={saveProduct}
+				form={'product_form'}
 			/>
-			<ProductInfo setProductInfoObject={setProductInfoObject} />
+			<ProductInfo
+				setProductInfoObject={setProductInfoObject}
+				handleSubmit={saveProduct}
+			/>
 			<Footer />
 		</div>
 	);

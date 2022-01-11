@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ProductInfo.sass';
 import ProductType from '../ProductType/ProductType';
-import FurnitureComponent from '../ProductType/FurnitureComponent';
 
 const ProductInfo = props => {
 	const [productSku, setProductSku] = useState('');
@@ -36,7 +35,7 @@ const ProductInfo = props => {
 
 	return (
 		<div>
-			<form id="product_form">
+			<form id="product_form" onSubmit={props.handleSubmit}>
 				<div id="sku">
 					<label>Sku</label>
 					<input
@@ -51,6 +50,7 @@ const ProductInfo = props => {
 				<div id="name">
 					<label>Name</label>
 					<input
+						required
 						type="text"
 						onChange={e => {
 							setProductName(e.target.value);
@@ -60,6 +60,7 @@ const ProductInfo = props => {
 				<div id="price">
 					<label>Price</label>
 					<input
+						required
 						type="number"
 						onChange={e => {
 							setProductPrice(e.target.value);
@@ -69,12 +70,13 @@ const ProductInfo = props => {
 				<div className="type-switcher">
 					<label>Type switcher</label>
 					<select
+						required="required"
 						name="productType"
 						id="productType"
-						defaultValue={'none'}
+						defaultValue={''}
 						onChange={changeType}
 					>
-						<option value="none" disabled hidden>
+						<option value="" disabled hidden>
 							Select a Type
 						</option>
 						<option value="DVD">DVD</option>

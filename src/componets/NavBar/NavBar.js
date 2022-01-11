@@ -11,13 +11,15 @@ const NavBar = props => {
 				<Link to={props.handleRouting}>
 					<Button textInButton={props.textInButton1} />
 				</Link>
-				<Link to={'/'}>
-					<Button
-						textInButton={props.textInButton2}
-						id="delete-product-btn"
-						handleClick={props.handleClick}
-					/>
-				</Link>
+				{/* <Link to={'/'}> */}
+				<Button
+					textInButton={props.textInButton2}
+					id="delete-product-btn"
+					handleClick={props.handleClick}
+					handleSubmit={props.handleSubmit}
+					form={props.form}
+				/>
+				{/* </Link> */}
 			</div>
 		</div>
 	);
