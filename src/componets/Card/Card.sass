@@ -1,14 +1,25 @@
+*
+	padding: 0
+	margin: 0
+	box-sizing: border-box
+    
 .card
     width: 200px
-    height: 200px
-    border: 2px solid black
+    height: 230px
+    border: 2px solid #302e2e
     display: flex
     flex-direction: column
     justify-content: space-around
     align-items: center
-    margin: 2rem
-    gap: 1rem
+    margin:  1rem
+    border-radius: 5%
+    background: #91929b
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(77, 80, 100 , .75)
     input
         align-self: flex-start
         margin-left: 1rem
         
+
+.card:hover
+    filter: brightness(0.9)
+    transition: .2s

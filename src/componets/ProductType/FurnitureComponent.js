@@ -4,7 +4,7 @@ const FurnitureComponent = props => {
 	return (
 		<>
 			<div>
-				<label>Height (CM)</label>
+				<label>Height (CM):</label>
 				<input
 					required
 					id="height"
@@ -15,7 +15,7 @@ const FurnitureComponent = props => {
 				></input>
 			</div>
 			<div>
-				<label>Width (CM)</label>
+				<label>Width (CM):</label>
 				<input
 					required
 					id="width"
@@ -26,7 +26,7 @@ const FurnitureComponent = props => {
 				></input>
 			</div>
 			<div>
-				<label>Length (CM)</label>
+				<label>Length (CM):</label>
 				<input
 					required
 					id="length"
@@ -36,6 +36,7 @@ const FurnitureComponent = props => {
 					}}
 				></input>
 			</div>
+			<p className="description">Pleace provide the size in Mb of the DVD</p>
 		</>
 	);
 };
