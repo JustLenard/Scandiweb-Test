@@ -17,6 +17,7 @@ app.get('/api/get', (req, res) => {
 });
 
 app.delete('/api/delete', (req, res) => {
+	const toDelete = req.body;
 	const sqlDelete = `DELETE FROM Products WHERE idProduct IN (${toDelete.join()})`;
 	connection.query(sqlDelete, (err, result) => {
 		if (err) console.log(err);
