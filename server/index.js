@@ -3,8 +3,28 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 var connection = require('./database.js');
 const app = express();
-require('dotenv').config();
-var port = process.env.PORT || 3001;
+
+// const db = mysql.createPool({
+// 	host: 'localhost',
+// 	user: 'admin',
+// 	password: 'password',
+// 	database: 'ScandiwebDB',
+// });
+
+// const db = mysql.createConnection({
+// 	host: 'localhost',
+// 	user: 'admin',
+// 	password: 'password',
+// 	database: 'ScandiwebDB',
+// });
+
+// app.get('/', (req, res) => {
+// 	let sql = 'SELECT * FROM ScandiwebDB.new_table;';
+// 	connection.query(sql, (err, results) => {
+// 		if (err) throw err;
+// 		res.send(results);
+// 	});
+// });s
 
 app.use(cors());
 app.use(express.json());
@@ -18,17 +38,25 @@ app.get('/api/get', (req, res) => {
 });
 
 app.delete('/api/delete', (req, res) => {
-	console.log(`here: ${req.data}`);
-	// console.log(data);
-	// console.log(toDelete.join());
+	const toDelete = req.body;
+	console.log(toDelete.join());
+	// toDelete.map(item => console.log(item));
 	const sqlDelete = `DELETE FROM Products WHERE idProduct IN (${toDelete.join()})`;
 	connection.query(sqlDelete, (err, result) => {
 		// if (err) console.log(err);
 	});
+
+	// toDelete.forEach(product => {
+	// 	console.log(product);
+	// });
+	// connection.query(sqlDelete, toDelete[0], (err, result) => {
+	// 	if (err) console.log(err);
+	// });
 });
 
 app.post('/api/insert', (req, res) => {
 	const FrontEndObj = req.body;
+
 	const sqlInsert =
 		'INSERT INTO Products (Sku, Name, Price, Type, Size, Weight, Height, Length, Width) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
 	connection.query(
@@ -51,9 +79,10 @@ app.post('/api/insert', (req, res) => {
 });
 
 app.listen(3001, () => {
+	console.log('seems to be working!!');
 	connection.connect(err => {
 		console.log(process.env.PORT);
 		if (err) throw err;
-		console.log(err);
+		console.log('Connected to DB');
 	});
 });

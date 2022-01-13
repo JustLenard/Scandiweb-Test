@@ -4,15 +4,13 @@ import ProductInfo from '../ProductInfo/ProductInfo';
 import Footer from '../Footer/Footer';
 import './AddProduct.sass';
 import Axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 const AddProduct = props => {
 	const [productInfoObject, setProductInfoObject] = useState({});
-	let navigate = useNavigate();
 
 	//Save product to Data Base
 	const saveProduct = e => {
-		e.preventDefault();
+		console.log(window.location);
 		Axios.post('http://localhost:3001/api/insert', {
 			productSku: productInfoObject.productSku,
 			productName: productInfoObject.productName,
@@ -24,8 +22,7 @@ const AddProduct = props => {
 			productWeight: Number(productInfoObject.productWeight),
 			productWidth: Number(productInfoObject.productWidth),
 		});
-		navigate('/');
-		window.location.reload();
+		window.location = 'http://localhost:3000/';
 	};
 
 	return (

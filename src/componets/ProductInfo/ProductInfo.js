@@ -34,10 +34,10 @@ const ProductInfo = props => {
 	};
 
 	return (
-		<div className="form-container">
+		<div>
 			<form id="product_form" onSubmit={props.handleSubmit}>
 				<div id="sku">
-					<label>Sku:</label>
+					<label>Sku</label>
 					<input
 						required
 						type="text"
@@ -48,7 +48,7 @@ const ProductInfo = props => {
 				</div>
 
 				<div id="name">
-					<label>Name:</label>
+					<label>Name</label>
 					<input
 						required
 						type="text"
@@ -58,7 +58,7 @@ const ProductInfo = props => {
 					></input>
 				</div>
 				<div id="price">
-					<label>Price:</label>
+					<label>Price</label>
 					<input
 						required
 						type="number"
@@ -68,7 +68,7 @@ const ProductInfo = props => {
 					></input>
 				</div>
 				<div className="type-switcher">
-					<label>Type switcher:</label>
+					<label>Type switcher</label>
 					<select
 						required="required"
 						name="productType"

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FurnitureComponent from './FurnitureComponent';
 import DVDComponent from './DVDComponent';
 import BookComponent from './BookComponent';
+import DefaultComponet from './DefaultComponet';
 
 const ProductType = props => {
 	const productTypes = {
@@ -14,7 +15,7 @@ const ProductType = props => {
 		),
 		DVD: <DVDComponent setProductSize={props.setProductSize} />,
 		Book: <BookComponent setProductWeight={props.setProductWeight} />,
-		'': <></>,
+		'': <DefaultComponet />,
 	};
 
 	return productTypes[props.currentType];
