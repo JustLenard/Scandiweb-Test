@@ -4,6 +4,7 @@ const cors = require('cors');
 var connection = require('./database.js');
 const app = express();
 require('dotenv').config();
+var port = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
@@ -17,9 +18,12 @@ app.get('/api/get', (req, res) => {
 });
 
 app.delete('/api/delete', (req, res) => {
+	console.log(`here: ${req.data}`);
+	// console.log(data);
+	// console.log(toDelete.join());
 	const sqlDelete = `DELETE FROM Products WHERE idProduct IN (${toDelete.join()})`;
 	connection.query(sqlDelete, (err, result) => {
-		if (err) console.log(err);
+		// if (err) console.log(err);
 	});
 });
 
@@ -41,15 +45,15 @@ app.post('/api/insert', (req, res) => {
 			FrontEndObj.productWidth,
 		],
 		(err, result) => {
-			console.log(err);
+			// console.log(err);
 		}
 	);
 });
 
-app.listen(process.env.PORT || 3001, () => {
+app.listen(3001, () => {
 	connection.connect(err => {
+		console.log(process.env.PORT);
 		if (err) throw err;
 		console.log(err);
 	});
 });
-//Can't deploy

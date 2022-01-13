@@ -31,8 +31,9 @@ const Home = props => {
 		const toDelete = products
 			.filter(product => product.checked === true)
 			.map(product => product.idProduct);
+		console.log(toDelete);
 		Axios.delete(`http://localhost:3001/api/delete`, { data: toDelete });
-		window.location.reload(true);
+		// window.location.reload(true);
 	};
 
 	return (
