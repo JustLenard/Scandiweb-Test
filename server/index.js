@@ -3,32 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 var connection = require('./database.js');
 const app = express();
-<<<<<<< HEAD
-
-// const db = mysql.createPool({
-// 	host: 'localhost',
-// 	user: 'admin',
-// 	password: 'password',
-// 	database: 'ScandiwebDB',
-// });
-
-// const db = mysql.createConnection({
-// 	host: 'localhost',
-// 	user: 'admin',
-// 	password: 'password',
-// 	database: 'ScandiwebDB',
-// });
-
-// app.get('/', (req, res) => {
-// 	let sql = 'SELECT * FROM ScandiwebDB.new_table;';
-// 	connection.query(sql, (err, results) => {
-// 		if (err) throw err;
-// 		res.send(results);
-// 	});
-// });s
-=======
-require('dotenv').config();
->>>>>>> parent of 92bb367... managed to host the back end. FInally
+const port = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
@@ -43,19 +18,9 @@ app.get('/api/get', (req, res) => {
 
 app.delete('/api/delete', (req, res) => {
 	const toDelete = req.body;
-	console.log(toDelete.join());
-	// toDelete.map(item => console.log(item));
-	const sqlDelete = `DELETE FROM Products WHERE idProduct IN (${toDelete.join()})`;
-	connection.query(sqlDelete, (err, result) => {
-		// if (err) console.log(err);
-	});
 
-	// toDelete.forEach(product => {
-	// 	console.log(product);
-	// });
-	// connection.query(sqlDelete, toDelete[0], (err, result) => {
-	// 	if (err) console.log(err);
-	// });
+	const sqlDelete = `DELETE FROM Products WHERE idProduct IN (${toDelete.join()})`;
+	connection.query(sqlDelete, (err, result) => {});
 });
 
 app.post('/api/insert', (req, res) => {
@@ -76,24 +41,12 @@ app.post('/api/insert', (req, res) => {
 			FrontEndObj.productLength,
 			FrontEndObj.productWidth,
 		],
-		(err, result) => {
-			// console.log(err);
-		}
+		(err, result) => {}
 	);
 });
 
-<<<<<<< HEAD
-app.listen(3001, () => {
-	console.log('seems to be working!!');
+app.listen(port, () => {
 	connection.connect(err => {
-		console.log(process.env.PORT);
-		if (err) throw err;
-		console.log('Connected to DB');
-=======
-app.listen(process.env.PORT || 3001, () => {
-	connection.connect(err => {
-		if (err) throw err;
 		console.log(err);
->>>>>>> parent of 92bb367... managed to host the back end. FInally
 	});
 });
