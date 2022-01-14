@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 var connection = require('./database.js');
 const app = express();
+<<<<<<< HEAD
 
 // const db = mysql.createPool({
 // 	host: 'localhost',
@@ -25,6 +26,9 @@ const app = express();
 // 		res.send(results);
 // 	});
 // });s
+=======
+require('dotenv').config();
+>>>>>>> parent of 92bb367... managed to host the back end. FInally
 
 app.use(cors());
 app.use(express.json());
@@ -78,11 +82,18 @@ app.post('/api/insert', (req, res) => {
 	);
 });
 
+<<<<<<< HEAD
 app.listen(3001, () => {
 	console.log('seems to be working!!');
 	connection.connect(err => {
 		console.log(process.env.PORT);
 		if (err) throw err;
 		console.log('Connected to DB');
+=======
+app.listen(process.env.PORT || 3001, () => {
+	connection.connect(err => {
+		if (err) throw err;
+		console.log(err);
+>>>>>>> parent of 92bb367... managed to host the back end. FInally
 	});
 });

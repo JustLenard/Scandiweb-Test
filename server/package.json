@@ -22,7 +22,11 @@
 		"cors": "^2.8.5",
 		"express": "^4.17.2",
 		"mysql": "^2.18.1",
+<<<<<<< HEAD
 		"nodemon": "^2.0.15",
 		"serve": "^13.0.2"
+=======
+		"nodemon": "^2.0.15"
+>>>>>>> parent of 92bb367... managed to host the back end. FInally
 	}
 }
