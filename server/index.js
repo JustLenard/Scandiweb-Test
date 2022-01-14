@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 var connection = require('./database.js');
 const app = express();
-require('dotenv').config();
+const port = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
@@ -47,9 +47,8 @@ app.post('/api/insert', (req, res) => {
 	);
 });
 
-app.listen(process.env.PORT || 3001, () => {
+app.listen(port, () => {
 	connection.connect(err => {
-		if (err) throw err;
 		console.log(err);
 	});
 });
