@@ -10,6 +10,7 @@ const Home = props => {
 
 	// Get the information from the Data Base
 	useEffect(() => {
+		console.log('Home');
 		Axios.get('https://scandiwebtest.herokuapp.com/api/get').then(response => {
 			response.data.map(obj => {
 				obj.checked = false;

@@ -9,5 +9,6 @@ var connection = mysql.createConnection({
 
 //server(adress): sql11.freemysqlhosting.net
 //sql11.freemysqlhosting.net:3306/
+//Why do you not see chanes
 
 module.exports = connection;

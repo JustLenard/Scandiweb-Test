@@ -3,16 +3,18 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 var connection = require('./database.js');
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3002;
 
 app.use(cors());
+
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/get', (req, res) => {
-	console.log('Hello');
+	console.log('Hello there');
 	const sqlSelect = `SELECT * FROM sql11465741.Products;`;
 	connection.query(sqlSelect, (err, result) => {
+		console.log(result);
 		res.send(result);
 	});
 });
@@ -27,6 +29,7 @@ app.delete('/api/delete', (req, res) => {
 
 app.post('/api/insert', (req, res) => {
 	const FrontEndObj = req.body;
+	console.log(FrontEndObj);
 	const sqlInsert =
 		'INSERT INTO Products (Sku, Name, Price, Type, Size, Weight, Height, Length, Width) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
 	connection.query(
@@ -51,6 +54,9 @@ app.post('/api/insert', (req, res) => {
 app.listen(port, () => {
 	connection.connect(err => {
 		console.log(`listening to port ${port}`);
-		console.log(err);
+		const sqlSelect = `SELECT * FROM sql11465741.Products;`;
+		connection.query(sqlSelect, (err, result) => {
+			console.log(result);
+		});
 	});
 });
