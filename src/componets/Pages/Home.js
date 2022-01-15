@@ -10,7 +10,7 @@ const Home = props => {
 
 	// Get the information from the Data Base
 	useEffect(() => {
-		Axios.get('http://localhost:3001/api/get').then(response => {
+		Axios.get('https://scandiwebtest.herokuapp.com/api/get').then(response => {
 			response.data.map(obj => {
 				obj.checked = false;
 			});
@@ -31,7 +31,9 @@ const Home = props => {
 		const toDelete = products
 			.filter(product => product.checked === true)
 			.map(product => product.idProduct);
-		Axios.delete(`http://localhost:3001/api/delete`, { data: toDelete });
+		Axios.delete(`https://scandiwebtest.herokuapp.com/api/delete`, {
+			data: toDelete,
+		});
 		window.location.reload(true);
 	};
 

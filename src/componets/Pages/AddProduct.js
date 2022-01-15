@@ -13,7 +13,7 @@ const AddProduct = props => {
 	//Save product to Data Base
 	const saveProduct = e => {
 		e.preventDefault();
-		Axios.post('http://localhost:3001/api/insert', {
+		Axios.post('https://scandiwebtest.herokuapp.com/api/insert', {
 			productSku: productInfoObject.productSku,
 			productName: productInfoObject.productName,
 			productPrice: productInfoObject.productPrice,
