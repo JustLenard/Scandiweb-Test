@@ -7,10 +7,10 @@ import Axios from 'axios';
 
 const Home = props => {
 	const [products, setProducts] = useState([]);
+	const [deleteList, setDeleteList] = useState(products);
 
-	// Get the information from the Data Base
+	// Gets the Products from the data base
 	useEffect(() => {
-		console.log('Home');
 		Axios.get('https://scandiwebtest.herokuapp.com/api/get').then(response => {
 			response.data.map(obj => {
 				obj.checked = false;
@@ -19,23 +19,30 @@ const Home = props => {
 		});
 	}, []);
 
-	const [deleteList, setDeleteList] = useState(products);
-
 	// Handles the 'checked' logic on cards
 	const handleCheck = (newValue, id) => {
 		products.filter(product => product.idProduct === id)[0].checked = newValue;
 
 		setProducts(products);
 	};
+
 	// Handles the mass Delete logic
-	const massDelete = () => {
+	const massDelete = async () => {
 		const toDelete = products
 			.filter(product => product.checked === true)
 			.map(product => product.idProduct);
-		Axios.delete(`https://scandiwebtest.herokuapp.com/api/delete`, {
-			data: toDelete,
-		});
-		window.location.reload(true);
+
+		try {
+			const del = await Axios.delete(
+				`https://scandiwebtest.herokuapp.com/api/delete`,
+				{
+					data: toDelete,
+				}
+			);
+			window.location.reload(true);
+		} catch (e) {
+			console.log(e);
+		}
 	};
 
 	return (

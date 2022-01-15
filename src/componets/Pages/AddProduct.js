@@ -11,21 +11,27 @@ const AddProduct = props => {
 	let navigate = useNavigate();
 
 	//Save product to Data Base
-	const saveProduct = e => {
+	const saveProduct = async e => {
 		e.preventDefault();
-		Axios.post('https://scandiwebtest.herokuapp.com/api/insert', {
-			productSku: productInfoObject.productSku,
-			productName: productInfoObject.productName,
-			productPrice: productInfoObject.productPrice,
-			productType: productInfoObject.currentType,
-			productHeight: Number(productInfoObject.productHeight),
-			productLength: Number(productInfoObject.productLength),
-			productSize: Number(productInfoObject.productSize),
-			productWeight: Number(productInfoObject.productWeight),
-			productWidth: Number(productInfoObject.productWidth),
-		});
-		navigate('/');
-		window.location.reload();
+		try {
+			const res = await Axios.post(
+				'https://scandiwebtest.herokuapp.com/api/insert',
+				{
+					productSku: productInfoObject.productSku,
+					productName: productInfoObject.productName,
+					productPrice: productInfoObject.productPrice,
+					productType: productInfoObject.currentType,
+					productHeight: Number(productInfoObject.productHeight),
+					productLength: Number(productInfoObject.productLength),
+					productSize: Number(productInfoObject.productSize),
+					productWeight: Number(productInfoObject.productWeight),
+					productWidth: Number(productInfoObject.productWidth),
+				}
+			);
+			navigate('/');
+		} catch (e) {
+			console.log(e);
+		}
 	};
 
 	return (
