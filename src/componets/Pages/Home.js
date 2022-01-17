@@ -49,8 +49,8 @@ const Home = props => {
 		<div className="main-container">
 			<NavBar
 				navBarText={'Product List'}
-				textInButton1={'Add'}
-				textInButton2={'Mass Delete'}
+				textInButton1={'ADD'}
+				textInButton2={'MASS DELETE'}
 				handleRouting="/addproduct"
 				handleClick={massDelete}
 			/>
