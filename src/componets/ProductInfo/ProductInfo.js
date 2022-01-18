@@ -13,6 +13,7 @@ const ProductInfo = props => {
 	const [productLength, setProductLength] = useState(0);
 	const [productWidth, setProductWidth] = useState(0);
 
+	//All the info about the product
 	const productInfoObject = {
 		productSku: productSku,
 		productName: productName,
@@ -25,6 +26,7 @@ const ProductInfo = props => {
 		productWidth: productWidth,
 	};
 
+	//Sends the info about the product to the Parent element (AddProduct)
 	useEffect(() => {
 		props.setProductInfoObject(productInfoObject);
 	}, [JSON.stringify(productInfoObject)]);
