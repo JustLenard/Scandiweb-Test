@@ -36,9 +36,10 @@ const ProductInfo = props => {
 	return (
 		<div className="form-container">
 			<form id="product_form" onSubmit={props.handleSubmit}>
-				<div id="sku">
+				<div>
 					<label>Sku:</label>
 					<input
+						id="sku"
 						required
 						type="text"
 						onChange={e => {
@@ -47,9 +48,10 @@ const ProductInfo = props => {
 					></input>
 				</div>
 
-				<div id="name">
+				<div>
 					<label>Name:</label>
 					<input
+						id="name"
 						required
 						type="text"
 						onChange={e => {
@@ -57,9 +59,10 @@ const ProductInfo = props => {
 						}}
 					></input>
 				</div>
-				<div id="price">
+				<div>
 					<label>Price:</label>
 					<input
+						id="price"
 						required
 						type="number"
 						onChange={e => {
