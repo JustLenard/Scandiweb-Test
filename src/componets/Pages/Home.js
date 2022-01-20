@@ -7,7 +7,6 @@ import Axios from 'axios';
 
 const Home = props => {
 	const [products, setProducts] = useState([]);
-	const [deleteList, setDeleteList] = useState(products);
 
 	// Gets the Products from the data base
 	useEffect(() => {
