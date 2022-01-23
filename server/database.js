@@ -7,8 +7,7 @@ var connection = mysql.createConnection({
 	database: 'sql11465741',
 });
 
-//server(adress): sql11.freemysqlhosting.net
-//sql11.freemysqlhosting.net:3306/
-//Why do you not see chanes
+//Database expired
+// Need to find something that will keep on running
 
 module.exports = connection;
