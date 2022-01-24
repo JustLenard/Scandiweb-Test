@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
 	host: 'sql11.freemysqlhosting.net',
 	user: 'sql11465741',
 	password: 'X2GmyJ7YPD',
