@@ -1,13 +1,9 @@
-var mysql = require('mysql');
+const Pool = require('pg').Pool;
 
-const connection = mysql.createConnection({
-	host: 'sql11.freemysqlhosting.net',
-	user: 'sql11465741',
-	password: 'X2GmyJ7YPD',
-	database: 'sql11465741',
+const connection = new Pool({
+	connectionString: process.env.DATABASE_URL,
 });
 
-//Database expired
-// Need to find something that will keep on running
+// connection.connect();
 
 module.exports = connection;
