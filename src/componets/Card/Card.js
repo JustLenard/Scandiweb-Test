@@ -3,12 +3,12 @@ import './Card.sass';
 
 const Card = props => {
 	const typeDiferences = {
-		Book: <div>Weight: {props.product.Size} KG</div>,
-		DVD: <div>Size: {props.product.Size} MB</div>,
+		Book: <div>Weight: {props.product.weight} KG</div>,
+		DVD: <div>Size: {props.product.size} MB</div>,
 		Furniture: (
 			<div>
-				Dimension: {props.product.Height}x{props.product.Width}x
-				{props.product.Length}
+				Dimension: {props.product.height}x{props.product.width}x
+				{props.product.length}
 			</div>
 		),
 	};
@@ -19,13 +19,13 @@ const Card = props => {
 				className={'delete-checkbox'}
 				type={'checkBox'}
 				onClick={e => {
-					props.handleCheck(e.target.checked, props.product.idProduct);
+					props.handleCheck(e.target.checked, props.product.idproduct);
 				}}
 			></input>
-			<div>Sku: {props.product.Sku}</div>
-			<div>Name: {props.product.Name}</div>
-			<div>Price: {props.product.Price} $</div>
-			{typeDiferences[`${props.product.Type}`]}
+			<div>Sku: {props.product.sku}</div>
+			<div>Name: {props.product.name}</div>
+			<div>Price: {props.product.price} $</div>
+			{typeDiferences[`${props.product.type}`]}
 		</div>
 	);
 };

@@ -14,12 +14,12 @@ const AddProduct = props => {
 	const saveProduct = async e => {
 		e.preventDefault();
 		try {
-			const res = await Axios.post(
+			const send = await Axios.post(
 				'https://scandiwebtest.herokuapp.com/api/insert',
 				{
 					productSku: productInfoObject.productSku,
 					productName: productInfoObject.productName,
-					productPrice: productInfoObject.productPrice,
+					productPrice: Number(productInfoObject.productPrice),
 					productType: productInfoObject.currentType,
 					productHeight: Number(productInfoObject.productHeight),
 					productLength: Number(productInfoObject.productLength),
@@ -28,7 +28,9 @@ const AddProduct = props => {
 					productWidth: Number(productInfoObject.productWidth),
 				}
 			);
-			navigate('/');
+			// navigate('/');
+			console.log(send);
+			console.log(productInfoObject);
 		} catch (e) {
 			console.log(e);
 		}

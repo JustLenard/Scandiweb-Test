@@ -11,16 +11,17 @@ const Home = props => {
 	// Gets the Products from the data base
 	useEffect(() => {
 		Axios.get('https://scandiwebtest.herokuapp.com/api/get').then(response => {
-			response.data.map(obj => {
+			response.data.rows.map(obj => {
 				obj.checked = false;
 			});
-			setProducts(response.data);
+			console.log(response.data.rows);
+			setProducts(response.data.rows);
 		});
 	}, []);
 
 	// Handles the 'checked' logic on cards
 	const handleCheck = (newValue, id) => {
-		products.filter(product => product.idProduct === id)[0].checked = newValue;
+		products.filter(product => product.idproduct === id)[0].checked = newValue;
 
 		setProducts(products);
 	};
@@ -29,7 +30,7 @@ const Home = props => {
 	const massDelete = async () => {
 		const toDelete = products
 			.filter(product => product.checked === true)
-			.map(product => product.idProduct);
+			.map(product => product.idproduct);
 
 		try {
 			const del = await Axios.delete(
@@ -57,7 +58,7 @@ const Home = props => {
 				{products.map(product => {
 					return (
 						<Card
-							key={product.Sku}
+							key={product.sku}
 							product={product}
 							handleCheck={handleCheck}
 						/>
