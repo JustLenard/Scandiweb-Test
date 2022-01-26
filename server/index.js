@@ -38,9 +38,12 @@ app.delete('/api/delete', (req, res) => {
 
 app.post('/api/insert', (req, res) => {
 	const FrontEndObj = req.body;
-	console.log(FrontEndObj);
 	res.send('OK');
-	const sqlInsert = `INSERT INTO products (sku, name, price, type, size, weight, height, length, width) VALUES ('${FrontEndObj.productSku}', '${FrontEndObj.productName}', ${FrontEndObj.productPrice}, '${FrontEndObj.productType}', ${FrontEndObj.productSize}, ${FrontEndObj.productWeight}, ${FrontEndObj.productHeight}, ${FrontEndObj.productLength}, ${FrontEndObj.productWidth});`;
+
+	const sqlInsert = `INSERT INTO products (sku, name, price, type, size, weight, height, length, width) VALUES ('${FrontEndObj.productSku}', 
+	'${FrontEndObj.productName}', ${FrontEndObj.productPrice}, '${FrontEndObj.productType}', ${FrontEndObj.productSize}, ${FrontEndObj.productWeight}, 
+	${FrontEndObj.productHeight}, ${FrontEndObj.productLength}, ${FrontEndObj.productWidth});`;
+
 	connection.query(
 		sqlInsert,
 
