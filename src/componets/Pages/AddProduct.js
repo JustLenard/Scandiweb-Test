@@ -28,9 +28,9 @@ const AddProduct = props => {
 					productWidth: Number(productInfoObject.productWidth),
 				}
 			);
-			// navigate('/');
 			console.log(send);
 			console.log(productInfoObject);
+			navigate('/');
 		} catch (e) {
 			console.log(e);
 		}

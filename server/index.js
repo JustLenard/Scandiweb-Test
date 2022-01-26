@@ -40,20 +40,10 @@ app.post('/api/insert', (req, res) => {
 	const FrontEndObj = req.body;
 	console.log(FrontEndObj);
 	res.send('OK');
-	const sqlInsert = `INSERT INTO products (Sku, Name, Price, Type, Size, Weight, Height, Length, Width) VALUES (, ?, ?, ?, ?, ?, ?, ?, ?)`;
+	const sqlInsert = `INSERT INTO products (sku, name, price, type, size, weight, height, length, width) VALUES ('${FrontEndObj.productSku}', '${FrontEndObj.productName}', ${FrontEndObj.productPrice}, '${FrontEndObj.productType}', ${FrontEndObj.productSize}, ${FrontEndObj.productWeight}, ${FrontEndObj.productHeight}, ${FrontEndObj.productLength}, ${FrontEndObj.productWidth});`;
 	connection.query(
 		sqlInsert,
-		[
-			FrontEndObj.productSku,
-			FrontEndObj.productName,
-			FrontEndObj.productPrice,
-			FrontEndObj.productType,
-			FrontEndObj.productSize,
-			FrontEndObj.productWeight,
-			FrontEndObj.productHeight,
-			FrontEndObj.productLength,
-			FrontEndObj.productWidth,
-		],
+
 		(err, result) => {
 			console.log(err);
 		}
