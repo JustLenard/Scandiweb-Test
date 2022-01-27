@@ -14,7 +14,6 @@ const Home = props => {
 			response.data.rows.map(obj => {
 				obj.checked = false;
 			});
-			console.log(response.data.rows);
 			setProducts(response.data.rows);
 		});
 	}, []);

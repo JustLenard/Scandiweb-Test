@@ -1,10 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// const connection = require('./database.js');
 const app = express();
 const port = process.env.PORT || 3002;
-
 const { Client } = require('pg');
 
 const connection = new Client({
@@ -13,8 +11,6 @@ const connection = new Client({
 		rejectUnauthorized: false,
 	},
 });
-
-// client.connect();
 
 app.use(cors());
 app.use(express.json());
